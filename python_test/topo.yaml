@@ -1,0 +1,16 @@
+net:
+ - network: 
+   name: "mgt-net"
+   bridge: 
+     _name: "mgt-net"
+     _stp: n
+     _delay: 0
+   forward: 
+     _mode: nat
+   ip: 
+    dhcp: 
+      range: 
+        _start: "192.168.211.2"
+        _end: "192.168.211.5"
+      _address: "192.168.211.1"
+      _netmask: "255.255.255.0"

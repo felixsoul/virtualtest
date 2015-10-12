@@ -1,0 +1,23 @@
+
+network: 
+ name: "mgt-net"
+ uuid: "065a5daf-8389-4623-b8ba-fbd7125b0341"
+ forward: 
+  nat: 
+   port: 
+    _start: 1024
+    _end: 65535
+  _mode: nat
+ bridge: 
+  _name: "mgt-net"
+  _stp: on
+  _delay: 0
+ mac: 
+  _address: "52:54:00:67:fe:42"
+ ip: 
+  dhcp: 
+   range: 
+    _start: "192.168.211.2"
+    _end: "192.168.211.5"
+  _address: "192.168.211.1"
+  _netmask: "255.255.255.0"

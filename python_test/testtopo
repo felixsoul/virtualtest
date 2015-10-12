@@ -1,0 +1,1 @@
+<network><forward mode="nat"/><bridge delay="0" stp="n" name="mgt-net-test"/><name>mgt-net-test</name><ip netmask="255.255.255.0" address="192.168.212.1"><dhcp><range start="192.168.212.2" end="192.168.212.5"/></dhcp></ip></network>

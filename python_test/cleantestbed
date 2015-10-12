@@ -1,0 +1,8 @@
+virsh destroy xhshi-testpc1
+virsh undefine xhshi-testpc1
+virsh destroy xhshi-testpc2
+virsh undefine xhshi-testpc2
+virsh net-destroy mgt-net-test
+virsh net-destroy waf-net1-test
+virsh net-undefine mgt-net-test
+virsh net-undefine waf-net1-test

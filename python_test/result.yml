@@ -1,0 +1,25 @@
+network:
+  __text__: ' '
+  bridge:
+  - __tail__: ' '
+    delay: '0'
+    name: mgt-net
+    stp: n
+  forward:
+  - __tail__: ' '
+    mode: nat
+  ip:
+  - __tail__: ' '
+    __text__: ' '
+    address: 192.168.211.1
+    dhcp:
+    - __tail__: ' '
+      __text__: ' '
+      range:
+      - __tail__: ' '
+        end: 192.168.211.5
+        start: 192.168.211.2
+    netmask: 255.255.255.0
+  name:
+  - __tail__: ' '
+    __text__: mgt-net

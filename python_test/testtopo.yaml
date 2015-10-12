@@ -1,0 +1,9 @@
+
+    - name: mgt-net
+      attributes:
+          ip:     
+          - address: 192.168.212.1
+            netmask: 255.255.255.0
+          - dhcp:
+             range: 'start: 192.169.212.2,end: 192.168.212.5'
+    - name: waf-net1

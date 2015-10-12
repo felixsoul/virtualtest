@@ -1,0 +1,53 @@
+net: 
+  bridge:
+  - delay: '0'
+    name: mgt-net
+    stp: n
+  forward:
+  - mode: nat
+  ip:
+  - address: 192.168.211.1
+    dhcp:
+    - range:
+      - end: 192.168.211.5
+        start: 192.168.211.2
+    netmask: 255.255.255.0
+  name:
+  - __text__: mgt-net
+  name:
+  - __text__: waf-net1
+vm:
+    - name: testpc1
+      ostype: linux
+      virttype: kvm
+      image: /home/xhshi/images/centos
+      ram: 2048
+      vcpus: 2
+      boot: hd
+      disk: 
+          - diskpath: pc1.img
+            device: disk
+            bus: ide
+            format: qcow2
+      network:
+          - subnet: mgt-net
+            model: virtio
+          - subnet: waf-net1
+            model: virtio 
+    - name: testpc2
+      ostype: linux
+      virttype: kvm
+      image: /home/xhshi/images/centos
+      ram: 2048
+      vcpus: 2
+      boot: hd
+      disk: 
+          - diskpath: centos-mini.img
+            device: disk
+            bus: ide
+            format: qcow2
+      network:
+          - subnet: mgt-net-test
+            model: virtio
+          - subnet: waf-net1
+            model: virtio 

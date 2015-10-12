@@ -1,0 +1,102 @@
+net: 
+  - name:
+    - __text__: mgt-net-test
+    bridge:
+    - delay: '0'
+      name: mgt-net-test
+      stp: n
+    forward:
+    - mode: nat
+    ip:
+    - address: 192.168.212.1
+      dhcp:
+      - range:
+        - end: 192.168.212.254
+          start: 192.168.212.2
+      netmask: 255.255.255.0
+  - name:
+    - __text__: waf-net1-test
+    bridge:
+    - delay: '0'
+      name: waf-net1-test
+      stp: 'on'
+  - name:
+    - __text__: waf-net2-test
+    bridge:
+    - delay: '0'
+      name: waf-net2-test
+      stp: 'on'
+vm:
+    - name: testpc1
+      username: root
+      password: hillstone
+      ostype: linux
+      virttype: kvm
+      image: /home/xhshi/images/centos
+      ram: 2048
+      vcpus: 2
+      boot: hd
+      disk: 
+          - diskpath: pc1.img
+            device: disk
+            bus: ide
+            format: qcow2
+      network:
+          - subnet: mgt-net-test
+            model: virtio
+          - subnet: waf-net1-test
+            model: virtio
+            ipaddr: 61.1.1.2
+            netmask: 24
+    - name: testpc2
+      username: root
+      password: hillstone
+      ostype: linux
+      virttype: kvm
+      image: /home/xhshi/images/centos
+      ram: 2048
+      vcpus: 2
+      boot: hd
+      disk: 
+          - diskpath: pc1.img
+            device: disk
+            bus: ide
+            format: qcow2
+      network:
+          - subnet: mgt-net-test
+            model: virtio
+          - subnet: waf-net2-test
+            model: virtio
+            ipaddr: 71.1.1.2
+            netmask: 24
+
+vfw: 
+    - name: testvfw
+      username: hillstone
+      password: hillstone
+      ostype: linux
+      virttype: kvm
+      image: /home/xhshi/images/vfw
+      ram: 2048
+      vcpus: 2
+      boot: cdrom
+      disk: 
+          - diskpath: SG6000-VFW02-31-5.0R0-D1008.iso
+            device: cdrom
+            bus: ide
+            format: raw
+          - diskpath: flash.img
+            device: disk
+            bus: ide
+            format: raw
+      network:
+          - subnet: mgt-net-test
+            model: virtio
+          - subnet: waf-net1-test
+            model: virtio
+            ipaddr: 61.1.1.1
+            netmask: 24
+          - subnet: waf-net2-test
+            model: virtio
+            ipaddr: 71.1.1.1
+            netmask: 24
