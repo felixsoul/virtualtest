@@ -1,0 +1,12 @@
+How to execute testcases?
+Step 1: Set up environment 
+        KVM and virt should be installed. You can find if the command 'virt-install' exists. 
+        Some python libs need to be installed. The code is run with python2.7.
+
+Step 2: Modify the global variables according to your requirements.
+        In the file 'lib/GlobalConfig.py": The variable "DefaultDir" defines the log folder.  
+                                           The variable "SrcDir" defines the folder of images which are VMs.
+
+Step 3: Execute the testcase. The command is as the followings:
+        #cd testcase
+        #./testcase_example.py
